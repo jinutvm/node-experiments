@@ -370,6 +370,7 @@
 // console.log(age1,age2,age3)
 
 
+
 // const [ age1, age2, age3 ] = age
 // console.log(age1,age2,age3)
 // const [ age1, , age3 ] = age
@@ -414,13 +415,13 @@
 // }
 // }
 
-
-
-
 // const {firstName, lastName} = myDetails
 // const {firstName:f1, lastName, address} = myDetails
 // console.log(f1,lastName, address)
-
+// const {firstName:f1, lastName, address:{state}} = myDetails
+// console.log(f1,lastName, state)
+// const {firstName:f1, lastName, address:{state:st}} = myDetails
+// console.log(f1,lastName, st)
 
 // let {firstName, address:{state}} = myDetails
 // firstName = 'Ajith'
@@ -504,47 +505,48 @@
 // const {age, ...remaining} = myDetails
 // console.log(age,remaining)
 
+// Callback Functions 
 
+// function makeUppercase(value){
+//     console.log(value.toUpperCase());
+// }
 
+// const makeUppercase = function fun1(value){
+//     console.log(value.toUpperCase())
+// }
 
+// const makeUppercase = (value)=>{
+//     console.log(value.toUpperCase())
+// }
 
+// const makeUppercase = (value)=>console.log(value.toUpperCase())
+// makeUppercase('Jinu')
 
+// const makeLowercase = (value)=>console.log(value.toLowerCase())
+// makeLowercase('Jinu')
 
+// const reverseString = (value)=>console.log(value.split('').reverse().join(''));
+// reverseString('Jinu')
 
+// const makeFullName = (name,cb) => {
+//     const fullname = `${name}` + ' Babu'
+//     cb(fullname)
+// }
 
+// const firstName = 'Jinu'
 
+// makeFullName(firstName,makeUppercase)
+// makeFullName(firstName,makeLowercase)
+// makeFullName(firstName,reverseString)
 
+// makeFullName('Jinu', (value)=>{
+//     console.log(value)
+// })
 
+// const firstStmt = ()=>console.log('This is first stmt')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// setTimeout(firstStmt,1000)
+// setTimeout(()=>console.log('This is first stmt inside set'),1000)
 
 
 // Callback functions
@@ -555,17 +557,17 @@
 // Callback Hell
 // const initialTime = 3000;
 // setTimeout(()=>{
-// console.log('First Statement')
-// setTimeout(()=>{
-// console.log('Second Statement inside first timeout')
-// setTimeout(()=>{
-// console.log('Third Stmt')
-// },2000)
-// console.log('Third timeout triggered')
-// },3000)
-// console.log('Second timeout triggered')
+//     console.log('First Statement')
+//     setTimeout(()=>{
+//         console.log('Second Statement inside first timeout')
+//         setTimeout(()=>{
+//             console.log('Third Stmt')
+//         },2000)
+//         console.log('Third timeout triggered')
+//     },3000)
+//     console.log('Second timeout triggered')
 // },initialTime);
-
+// console.log('First stmt process kicked off')
 
 // setTimeout(()=>{
 // console.log('Second Statement')
@@ -578,6 +580,141 @@
 
 
 // Solve Call back hell - Promises introduced
+// Will have Pending, Rejected, fullfilled
 // Promises have two way 1. then-catch 2. aysnc await
 
+// for (let i=0;i<10;i++){
+//     console.log(Math.floor(Math.random()),Math.floor(Math.random()*6)+1)
+// }
 
+
+// const inputValue = 2; 
+// const helloPromise = new Promise((resolve,reject)=>{
+//     const randomNumber = Math.floor(Math.random() * 3)
+//     console.log(randomNumber)
+//     if (randomNumber === inputValue){
+//         resolve('Random number matched')
+//     } else {
+//         reject('Random number not matched')
+//     }
+// })
+
+// helloPromise
+//     .then((msg2)=>{console.log(msg2)})
+//     .catch((msg1)=>{console.log(msg1)})
+
+// const firstTiming = 2000;
+// const writeLine = (msg,time)=>{
+//     setTimeout(()=>{
+//         console.log(msg)
+//     },time)
+// }
+// const writeLineWithLengthCheck = (msg,length1,time)=>{
+//     setTimeout(()=>{
+//         if(msg.length >length1){
+//             console.log(msg)
+//         }else {
+//             console.log(`length of message less than ${length1} charactors`)
+//         }
+//     },time)
+// }
+
+// writeLineWithLengthCheck('Hello this is my first stmt',10,1000)
+// writeLineWithLengthCheck('Hello this is my second stmt',10,3000)
+// writeLineWithLengthCheck('Hello this is my third stmt',10,2000)
+
+// const writeLineWLCPromise = (msg,length1,time) =>{
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             if(msg.length >length1){
+//                 resolve(msg)
+//             }else {
+//                 reject(`"${msg}" is rejected as Length of message less than ${length1} charactors`)
+//             }                 
+//         }, time);
+//     })
+// }
+
+// writeLineWLCPromise('Hello this is my first stmt',10,1000)
+//     .then((msg)=>{
+//         console.log(msg)
+//         writeLineWLCPromise('Hello this is my second stmt',10,3000)
+//             .then((msg)=>{
+//                 console.log(msg)
+//                 writeLineWLCPromise('Hello this is my third stmt',10,2000)
+//                     .then((msg)=>{
+//                         console.log(msg)
+//                     })
+//                     .catch((err1)=>{console.log(err1)})
+//             })
+//             .catch((err1)=>{console.log(err1)})
+//     })
+//     .catch((err1)=>{console.log(err1)})
+
+const writeLineWLCPromise = (msg,length1,time) =>{
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            if(msg.length >length1){
+                console.log(msg)
+                resolve()
+            }else {
+                reject(`"${msg}" is rejected as Length of message less than ${length1} charactors`)
+            }                 
+        }, time);
+    })
+}
+
+// writeLineWLCPromise('Hello this is my first stmt',10,1000)
+//     .then(()=>{
+//         writeLineWLCPromise('Hello this is my second stmt',10,3000)
+//             .then(()=>writeLineWLCPromise('Hello this is my third stmt',10,2000))
+//     })    
+//     .catch((err)=>console.log(err))
+
+// const writeLineAsync = (msg,length1,time)=>{
+//         return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             if(msg.length >length1){
+//                 console.log(msg)
+//                 resolve()
+//             }else {
+//                 reject(`"${msg}" is rejected as Length of message less than ${length1} charactors`)
+//             }                 
+//         }, time);
+//     })
+// }
+
+async function printAllLine(){ 
+    try {
+        await writeLineWLCPromise('Hello this is my first stmt',10,1000)
+        await writeLineWLCPromise('Hello this is my second stmt',10,3000)
+        await writeLineWLCPromise('Hello this is my third stmt',100,2000)       
+        
+    } catch (error) {
+        console.log(error)
+    }
+
+
+}
+
+printAllLine()
+
+
+// Try this if possible
+
+// const users = [
+//     {id:1, name: 'Jinu'},
+//     {id:2, name: 'Prasee'},
+//     {id:3, name: 'Niranjan'},
+//     {id:4, name: 'Neeraj'}
+// ];
+
+// const articles = [
+//     {userId: 1, articles:[1,2,3]},
+//     {userId: 2, articles:[4,5]},
+//     {userId: 3, articles:[6,7,8,9]}
+// ];
+
+// Requirement - Accept name, for the name display the articles. 
+// Steps -  1. Accept name as input, get the ID from users 
+//          2. Using ID as input, get the article
