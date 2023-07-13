@@ -661,7 +661,9 @@ const writeLineWLCPromise = (msg,length1,time) =>{
                 reject(`"${msg}" is rejected as Length of message less than ${length1} charactors`)
             }                 
         }, time);
+        // console.log('Hello world')
     })
+
 }
 
 // writeLineWLCPromise('Hello this is my first stmt',10,1000)
@@ -684,37 +686,85 @@ const writeLineWLCPromise = (msg,length1,time) =>{
 //     })
 // }
 
-async function printAllLine(){ 
-    try {
-        await writeLineWLCPromise('Hello this is my first stmt',10,1000)
-        await writeLineWLCPromise('Hello this is my second stmt',10,3000)
-        await writeLineWLCPromise('Hello this is my third stmt',100,2000)       
+// async function printAllLine(){
+//     try {
+//         await writeLineWLCPromise('Hello this is my first stmt',10,1000)
+//         await writeLineWLCPromise('Hello this is my second stmt',10,3000)
         
-    } catch (error) {
-        console.log(error)
-    }
+//     } catch (error) {
+//         console.log(error)
+//     }
+
+// }
+
+// async function printAllLine(){ 
+//     try {
+//         await writeLineWLCPromise('Hello this is my first stmt',10,1000)
+//         await writeLineWLCPromise('Hello this is my second stmt',10,3000)
+//         await writeLineWLCPromise('Hello this is my third stmt',100,2000)       
+        
+//     } catch (error) {
+//         console.log(error)
+//     }
 
 
-}
+// }
 
-printAllLine()
+// printAllLine()
 
 
 // Try this if possible
 
-// const users = [
-//     {id:1, name: 'Jinu'},
-//     {id:2, name: 'Prasee'},
-//     {id:3, name: 'Niranjan'},
-//     {id:4, name: 'Neeraj'}
-// ];
+const users = [
+    {id:1, name: 'Jinu'},
+    {id:2, name: 'Prasee'},
+    {id:3, name: 'Niranjan'},
+    {id:4, name: 'Neeraj'}
+];
 
-// const articles = [
-//     {userId: 1, articles:[1,2,3]},
-//     {userId: 2, articles:[4,5]},
-//     {userId: 3, articles:[6,7,8,9]}
-// ];
+const articles = [
+    {userId: 1, articles:[1,2,3]},
+    {userId: 2, articles:[4,5]},
+    {userId: 3, articles:[6,7,8,9]}
+];
 
 // Requirement - Accept name, for the name display the articles. 
 // Steps -  1. Accept name as input, get the ID from users 
 //          2. Using ID as input, get the article
+
+const getUserID = (name)=>{
+    return new Promise((resolve,reject)=>{
+        const user = users.find((user)=> {return user.name===name});
+        // console.log(user,name)
+        if (user){
+            return resolve(user)
+        } else {
+            return reject ('User doesnt exist')
+        }
+    })
+}
+
+const getArticles = (userDetails) =>{
+    return new Promise((resolve,reject)=>{
+        const article = articles.find((article1)=>{return article1.userId===userDetails.id})
+        if (article){
+            return resolve(article)
+        }else {
+            return reject(`No article for UserID ${userDetails.id} and UserName ${userDetails.name} `)
+        }
+
+    })
+}
+const getUserArticles = async (name)=>{
+    try {
+        const userSearchResult = await getUserID(name)
+        console.log(userSearchResult)
+        // const userArticleResult = await getArticles(userSearchResult.id)
+        const userArticleResult = await getArticles(userSearchResult)
+        console.log(userArticleResult)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+getUserArticles('Neeraj')
