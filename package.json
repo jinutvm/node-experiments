@@ -1,0 +1,24 @@
+{
+  "name": "experiments2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.js_basics.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "dev" : "nodemon 1.js_basics.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinutvm/node-experiments.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinutvm/node-experiments/issues"
+  },
+  "homepage": "https://github.com/jinutvm/node-experiments#readme",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
