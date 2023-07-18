@@ -67,6 +67,9 @@
 // return a+b
 // }
 // console.log(sum(3,4));
+// console.log(sum(3,4))
+
+
 
 
 // Objects
@@ -540,7 +543,8 @@
 // makeFullName(firstName,reverseString)
 
 // makeFullName('Jinu', (value)=>{
-//     console.log(value)
+//     const fullname1 = 'Jinu' + 'Babu'
+//     console.log(fullname1)
 // })
 
 // const firstStmt = ()=>console.log('This is first stmt')
@@ -651,20 +655,42 @@
 //     })
 //     .catch((err1)=>{console.log(err1)})
 
-const writeLineWLCPromise = (msg,length1,time) =>{
-    return new Promise((resolve,reject)=>{
-        setTimeout(() => {
+// const writeLineWLCPromise = (msg,length1,time) =>{
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             if(msg.length >length1){
+//                 console.log(msg)
+//                 resolve()
+//             }else {
+//                 reject(`"${msg}" is rejected as Length of message less than ${length1} charactors`)
+//             }                 
+//         }, time);
+//         // console.log('Hello world')
+//     })
+// }
+// const writeLineWLCPromise = (msg,length1,time) =>{
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(hello, time);
+//         // console.log('Hello world')
+//     })
+// }
+
+// setTimeout(()=>{hello
+
+// },time)
+
+// const hello = ()=>{
+
+// }
+
+const hello = () => {
             if(msg.length >length1){
                 console.log(msg)
                 resolve()
             }else {
                 reject(`"${msg}" is rejected as Length of message less than ${length1} charactors`)
             }                 
-        }, time);
-        // console.log('Hello world')
-    })
-
-}
+        }
 
 // writeLineWLCPromise('Hello this is my first stmt',10,1000)
 //     .then(()=>{
