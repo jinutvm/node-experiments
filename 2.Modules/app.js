@@ -35,3 +35,8 @@
 
 // console.log(__dirname)
 // console.log(os.userInfo())
+
+// const {sayHello} = require('./function')
+// const sayHello = {sayHello,sayHello1,sayHello2,sayHello3,sayHello4}
+// sayHello.sayHello1('Jinu')
+// sayHello('Jinu')
