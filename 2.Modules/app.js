@@ -37,6 +37,33 @@
 // console.log(os.userInfo())
 
 // const {sayHello} = require('./function')
+// const sayHello = require('./function')
 // const sayHello = {sayHello,sayHello1,sayHello2,sayHello3,sayHello4}
+// const {sayHelloX} = {sayHello,sayHello1,sayHello2,sayHello3,sayHello4}
 // sayHello.sayHello1('Jinu')
 // sayHello('Jinu')
+// console.log(sayHello)
+
+// const {sayHello:sayHelloX, sayHello2} = require('./function')
+
+// console.log(sayHelloX)
+
+
+// const sayHi1 = (name)=>{console.log(`Hello there ${name}`)}
+// const sayHi2 = (name)=>{console.log(`Hello there1 ${name}`)}
+
+// const sayHi = {sayHi1,sayHi2}
+
+// console.log(typeof sayHi,typeof sayHi1, typeof sayHi2)
+// console.log(sayHi)
+
+// const sayHiX = {
+//     sayHiX1 : (name)=>{console.log(`Hello there ${name}`)},
+//     sayHiX2 : (name)=>{console.log(`Hello there1 ${name}`)}
+// }
+
+// a1=()=>{}
+// a2=()=>{}
+
+// const a = {a1,a2}
+// console.log(a)

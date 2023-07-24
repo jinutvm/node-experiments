@@ -28,21 +28,26 @@
 
 // server.listen(6003,()=>console.log('Server is listening to port 6003...'))
 
+// const express = require('express')
+// const { readFileSync } = require('fs')
+// const path= require('path')
+// const app = express()
+
+// const homePage = readFileSync('./simple-page/amazon.html')
+// app.use(express.static('./simple-page'))
+
+
+
+// app.get('/',(req,res)=>{
+//     res.sendFile(path.resolve(__dirname,'./simple-page/amazon.html'))
+//     // res.send(homePage)
+// })
+
+// app.get('*',(req,res)=>{
+//     res.send('Route not found')
+// })
+
+// app.listen(7001,()=>console.log('Server is listening to 7000...'))
+
+//Middleware Setup 
 const express = require('express')
-const { readFileSync } = require('fs')
-const path= require('path')
-const app = express()
-
-const homePage = readFileSync('./simple-page/amazon.html')
-app.use(express.static('./simple-page'))
-
-app.get('/',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'./simple-page/amazon.html'))
-    // res.send(homePage)
-})
-
-app.get('*',(req,res)=>{
-    res.send('Route not found')
-})
-
-app.listen(7001,()=>console.log('Server is listening to 7000...'))

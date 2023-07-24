@@ -18,10 +18,15 @@ const deleteTask = (req,res)=>{
     res.send('Delete Task')
 }
 
+const displayAbout = (req,res)=>{
+    res.send('Hello about')
+}
+
 module.exports= {
     getAllTasks,
     createTask,
     getByID,
     updateTask,
-    deleteTask
+    deleteTask,
+    displayAbout
 }

@@ -9,9 +9,20 @@ const {
     deleteTask
 } = require('../controllers/task')
 
-router.get('/api/v1/tasks',(req,res)=>{
-    res.send('Get new routes')
-})
+
+
+// router.get('/api/v1/tasks',(req,res)=>{
+//     res.send('Get new routes1')
+// })
+
+// router.get('/',getAllTasks)
+// router.post('/',createTask)
+// router.get('/:id',getByID)
+// router.patch('/:id',updateTask)
+// router.delete('/:id',deleteTask)
+
+router.route('/').get(getAllTasks).post(createTask)
+router.route('/:id').get(getByID).patch(updateTask).delete(deleteTask)
 
 // router.get('/api/v1/tasks',getAllTasks)
 // router.post('/api/v1/tasks',createTask)

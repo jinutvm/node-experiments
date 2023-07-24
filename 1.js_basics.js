@@ -417,7 +417,6 @@
 // district: 'kochi'
 // }
 // }
-
 // const {firstName, lastName} = myDetails
 // const {firstName:f1, lastName, address} = myDetails
 // console.log(f1,lastName, address)
